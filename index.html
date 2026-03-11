@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gerador de Livros</title>
+<style>
+body{
+font-family: Arial;
+background:#f4f4f4;
+padding:40px;
+}
+
+.box{
+background:white;
+padding:30px;
+max-width:600px;
+margin:auto;
+border-radius:10px;
+}
+
+button{
+background:#0077ff;
+color:white;
+padding:10px 20px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+textarea{
+width:100%;
+height:200px;
+margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>Gerador de Ideias de Livro</h2>
+
+<p>Digite o nicho do livro:</p>
+
+<input id="nicho" placeholder="ex: espiritualidade">
+
+<br><br>
+
+<button onclick="gerar()">ANALISAR</button>
+
+<textarea id="resultado"></textarea>
+
+</div>
+
+<script>
+
+function gerar(){
+
+let nicho = document.getElementById("nicho").value
+
+let texto = ""
+
+texto += "NICHO: " + nicho + "\n\n"
+
+texto += "TÍTULOS SUGERIDOS:\n"
+texto += "1 O Poder da Transformação em " + nicho + "\n"
+texto += "2 Como Vencer Desafios de " + nicho + "\n"
+texto += "3 O Caminho da Liberdade em " + nicho + "\n\n"
+
+texto += "ESTRUTURA DO LIVRO:\n"
+texto += "Introdução\n"
+texto += "Capítulo 1 Fundamentos de " + nicho + "\n"
+texto += "Capítulo 2 Erros comuns\n"
+texto += "Capítulo 3 Método prático\n"
+texto += "Capítulo 4 Aplicação no dia a dia\n"
+texto += "Conclusão\n"
+
+document.getElementById("resultado").value = texto
+
+}
+
+</script>
+
+</body>
+</html>
