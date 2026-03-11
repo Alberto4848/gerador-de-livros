@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="UTF-8">
 <title>Gerador de Livros com IA</title>
 
 <style>
-
 body{
 font-family:Arial;
 background:#eef2f7;
@@ -23,17 +21,13 @@ box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
 button{
-background:#2c7be5;
+background:#2563eb;
 color:white;
 border:none;
 padding:10px 15px;
 margin:5px;
 border-radius:6px;
 cursor:pointer;
-}
-
-button:hover{
-background:#1a5fd1;
 }
 
 textarea{
@@ -47,9 +41,7 @@ input{
 padding:10px;
 width:100%;
 }
-
 </style>
-
 </head>
 
 <body>
@@ -86,103 +78,59 @@ width:100%;
 
 <script>
 
+const API_KEY = "AIzaSyBygv83RSjFBWbK1-e3a-RoRubuCCZnfMQ"
+
 function titulos(){
-
 let nicho=document.getElementById("nicho").value
-
 let texto="TÍTULOS DE LIVROS\n\n"
-
-texto+="1 O Método Definitivo para Vencer "+nicho+"\n"
-texto+="2 7 Estratégias para Superar "+nicho+"\n"
-texto+="3 Como Controlar a "+nicho+" na Vida Moderna\n"
-texto+="4 O Poder da Transformação Mental\n"
-texto+="5 A Verdade Oculta Sobre "+nicho+"\n"
-
+for(let i=1;i<=10;i++){
+texto+=i+" Estratégias para vencer "+nicho+"\n"
+}
 document.getElementById("resultado").value=texto
-
 }
 
 function estrutura(){
-
 let nicho=document.getElementById("nicho").value
-
 let texto="ESTRUTURA DO LIVRO\n\n"
-
-texto+="Introdução\n\n"
-texto+="Capítulo 1 Entendendo "+nicho+"\n"
-texto+="Capítulo 2 As causas emocionais\n"
-texto+="Capítulo 3 Como a mente reage\n"
-texto+="Capítulo 4 Mudando padrões mentais\n"
-texto+="Capítulo 5 Exercícios práticos\n"
-texto+="Capítulo 6 Construindo uma nova mentalidade\n"
+texto+="Introdução\n"
+for(let i=1;i<=8;i++){
+texto+="Capítulo "+i+" sobre "+nicho+"\n"
+}
 texto+="Conclusão\n"
-
 document.getElementById("resultado").value=texto
-
 }
 
 function sinopse(){
-
 let nicho=document.getElementById("nicho").value
-
 let texto="SINOPSE\n\n"
-
-texto+="Você sente que "+nicho+" domina sua mente?\n\n"
-
-texto+="Este livro revela técnicas práticas para compreender suas emoções, controlar pensamentos e desenvolver uma mente equilibrada.\n\n"
-
-texto+="Com estratégias simples e exercícios aplicáveis no dia a dia, você descobrirá como transformar sua vida emocional.\n"
-
+texto+="Você sente que "+nicho+" está dominando sua mente?\n\n"
+texto+="Neste livro você descobrirá técnicas práticas para recuperar o controle emocional e transformar sua forma de pensar."
 document.getElementById("resultado").value=texto
-
 }
 
 function ideias(){
-
 let nicho=document.getElementById("nicho").value
-
 let texto="50 IDEIAS DE LIVROS\n\n"
-
 for(let i=1;i<=50;i++){
-
-texto+=i+" Estratégias para lidar com "+nicho+"\n"
-
+texto+=i+" Como lidar com "+nicho+"\n"
 }
-
 document.getElementById("resultado").value=texto
-
 }
 
 function capitulo(){
-
 let nicho=document.getElementById("nicho").value
-
 let texto="CAPÍTULO 1\n\n"
-
-texto+="A "+nicho+" é uma das experiências emocionais mais comuns da vida moderna.\n\n"
-
-texto+="Muitas pessoas convivem diariamente com pensamentos acelerados e preocupações constantes.\n\n"
-
-texto+="Neste capítulo vamos compreender como esse processo se forma na mente humana.\n"
-
+texto+="A "+nicho+" é uma reação natural da mente diante de desafios."
 document.getElementById("resultado").value=texto
-
 }
 
 function capitulolongo(){
-
 let nicho=document.getElementById("nicho").value
-
-let texto="CAPÍTULO DETALHADO\n\n"
-
+let texto=""
 for(let i=0;i<10;i++){
-
-texto+="A "+nicho+" influencia diretamente o comportamento humano. Quando aprendemos a compreender nossos pensamentos, começamos a desenvolver maior controle emocional.\n\n"
-
+texto+="A "+nicho+" influencia diretamente o comportamento humano.\n\n"
 }
-
 document.getElementById("resultado").value=texto
-
 }
 
 async function livroIA(){
@@ -191,24 +139,26 @@ let nicho=document.getElementById("nicho").value
 
 document.getElementById("resultado").value="Gerando livro com IA... aguarde"
 
-let resposta = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyBygv83RSjFBWbK1-e3a-RoRubuCCZnfMQ",{
+try{
 
+let resposta = await fetch(
+`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
+{
 method:"POST",
-
 headers:{
 "Content-Type":"application/json"
 },
-
 body:JSON.stringify({
-
-contents:[{
-parts:[{
-text:"Escreva um ebook completo de 10 capítulos sobre "+nicho+" com introdução, capítulos detalhados e conclusão."
-}]
-}]
-
+contents:[
+{
+parts:[
+{
+text:"Escreva um ebook completo com introdução, 10 capítulos e conclusão sobre "+nicho
+}
+]
+}
+]
 })
-
 })
 
 let dados = await resposta.json()
@@ -216,16 +166,20 @@ let dados = await resposta.json()
 document.getElementById("resultado").value =
 dados.candidates[0].content.parts[0].text
 
+}catch(e){
+
+document.getElementById("resultado").value =
+"Erro ao gerar texto. Verifique a API."
+
+}
+
 }
 
 function copiar(){
 
 let texto=document.getElementById("resultado")
-
 texto.select()
-
 document.execCommand("copy")
-
 alert("Texto copiado!")
 
 }
