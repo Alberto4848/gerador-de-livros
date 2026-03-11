@@ -16,7 +16,7 @@ padding:40px;
 .box{
 background:white;
 padding:30px;
-max-width:800px;
+max-width:900px;
 margin:auto;
 border-radius:10px;
 box-shadow:0 0 10px rgba(0,0,0,0.1);
@@ -44,8 +44,9 @@ padding:10px;
 }
 
 input{
-padding:8px;
+padding:10px;
 width:100%;
+font-size:16px;
 }
 
 </style>
@@ -74,6 +75,12 @@ width:100%;
 
 <button onclick="livro()">GERAR LIVRO COMPLETO</button>
 
+<button onclick="ideias()">20 IDEIAS DE LIVROS</button>
+
+<button onclick="descricao()">DESCRIÇÃO QUE VENDE</button>
+
+<button onclick="capitulolongo()">CAPÍTULO LONGO</button>
+
 <button onclick="copiar()">COPIAR TEXTO</button>
 
 <textarea id="resultado"></textarea>
@@ -86,9 +93,7 @@ function titulos(){
 
 let nicho = document.getElementById("nicho").value
 
-let texto = ""
-
-texto += "TÍTULOS BEST SELLER\n\n"
+let texto = "TÍTULOS BEST SELLER\n\n"
 
 texto += "1 O Método Definitivo para Superar " + nicho + "\n"
 texto += "2 7 Passos Para Vencer a " + nicho + "\n"
@@ -100,13 +105,13 @@ document.getElementById("resultado").value = texto
 
 }
 
+
+
 function estrutura(){
 
 let nicho = document.getElementById("nicho").value
 
-let texto = ""
-
-texto += "ESTRUTURA DO LIVRO\n\n"
+let texto = "ESTRUTURA DO LIVRO\n\n"
 
 texto += "Introdução\n\n"
 texto += "Capítulo 1 Entendendo a " + nicho + "\n"
@@ -121,13 +126,13 @@ document.getElementById("resultado").value = texto
 
 }
 
+
+
 function capitulos(){
 
 let nicho = document.getElementById("nicho").value
 
-let texto = ""
-
-texto += "CAPÍTULO 1\n\n"
+let texto = "CAPÍTULO 1\n\n"
 
 texto += "A " + nicho + " é uma das experiências emocionais mais comuns da vida moderna. Muitas pessoas vivem com pensamentos acelerados, preocupações constantes e sensação de perda de controle.\n\n"
 
@@ -137,13 +142,13 @@ document.getElementById("resultado").value = texto
 
 }
 
+
+
 function sinopse(){
 
 let nicho = document.getElementById("nicho").value
 
-let texto = ""
-
-texto += "SINOPSE PARA AMAZON\n\n"
+let texto = "SINOPSE PARA AMAZON\n\n"
 
 texto += "Você sente que a " + nicho + " domina seus pensamentos?\n\n"
 
@@ -155,13 +160,13 @@ document.getElementById("resultado").value = texto
 
 }
 
+
+
 function livro(){
 
 let nicho = document.getElementById("nicho").value
 
-let texto = ""
-
-texto += "INTRODUÇÃO\n\n"
+let texto = "INTRODUÇÃO\n\n"
 
 texto += "A " + nicho + " tem se tornado um dos maiores desafios emocionais da vida moderna.\n\n"
 
@@ -178,6 +183,67 @@ texto += "CONCLUSÃO\nConstruindo uma mente forte e equilibrada.\n"
 document.getElementById("resultado").value = texto
 
 }
+
+
+
+function ideias(){
+
+let nicho = document.getElementById("nicho").value
+
+let texto = "20 IDEIAS DE LIVROS SOBRE " + nicho + "\n\n"
+
+for(let i=1;i<=20;i++){
+
+texto += i + " Estratégias práticas para superar " + nicho + "\n"
+
+}
+
+document.getElementById("resultado").value = texto
+
+}
+
+
+
+function descricao(){
+
+let nicho = document.getElementById("nicho").value
+
+let texto = "DESCRIÇÃO PARA AMAZON\n\n"
+
+texto += "✔ Você sente que a " + nicho + " domina seus pensamentos?\n"
+texto += "✔ Tem dificuldade em controlar emoções?\n\n"
+
+texto += "Neste livro você descobrirá métodos simples e eficazes para compreender sua mente, reduzir o estresse e desenvolver equilíbrio emocional.\n\n"
+
+texto += "Com exercícios práticos e explicações claras, este guia mostra como transformar sua relação com a " + nicho + " e construir uma vida mais tranquila.\n"
+
+document.getElementById("resultado").value = texto
+
+}
+
+
+
+function capitulolongo(){
+
+let nicho = document.getElementById("nicho").value
+
+let texto = "CAPÍTULO COMPLETO\n\n"
+
+texto += "A " + nicho + " é uma das experiências emocionais mais comuns da vida moderna.\n\n"
+
+texto += "Muitas pessoas convivem diariamente com preocupações constantes, pensamentos acelerados e sensação de perda de controle.\n\n"
+
+texto += "No entanto, compreender como esse processo acontece é o primeiro passo para recuperar o equilíbrio emocional.\n\n"
+
+texto += "Ao longo deste capítulo vamos explorar como a mente reage ao medo, como os pensamentos influenciam nossas emoções e quais são as primeiras estratégias para retomar a tranquilidade.\n\n"
+
+texto += "Pequenas mudanças na forma de pensar e agir podem gerar grandes transformações na forma como lidamos com desafios e incertezas.\n"
+
+document.getElementById("resultado").value = texto
+
+}
+
+
 
 function copiar(){
 
