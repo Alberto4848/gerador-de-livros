@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 
 <head>
 
+<meta charset="UTF-8">
 <title>Super Gerador de Livros Amazon KDP</title>
 
 <style>
@@ -13,7 +14,7 @@ background:#eef2f7;
 padding:40px;
 }
 
-.box{
+.container{
 background:white;
 padding:30px;
 max-width:1000px;
@@ -22,12 +23,23 @@ border-radius:10px;
 box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
+h1{
+text-align:center;
+}
+
+input{
+width:100%;
+padding:12px;
+font-size:16px;
+margin-bottom:15px;
+}
+
 button{
 background:#2c7be5;
 color:white;
 border:none;
-padding:10px 15px;
-margin:5px;
+padding:10px 14px;
+margin:4px;
 border-radius:6px;
 cursor:pointer;
 }
@@ -38,15 +50,9 @@ background:#1a5fd1;
 
 textarea{
 width:100%;
-height:450px;
+height:420px;
 margin-top:20px;
 padding:10px;
-}
-
-input{
-padding:10px;
-width:100%;
-font-size:16px;
 }
 
 </style>
@@ -55,35 +61,33 @@ font-size:16px;
 
 <body>
 
-<div class="box">
+<div class="container">
 
-<h2>Super Gerador de Livros para Amazon</h2>
+<h1>Super Gerador de Livros para Amazon KDP</h1>
 
-<p>Digite o nicho do livro:</p>
+<input id="nicho" placeholder="Digite o nicho do livro. Ex: ansiedade">
 
-<input id="nicho" placeholder="ex: ansiedade">
+<button onclick="titulos()">Gerar Títulos</button>
 
-<br><br>
+<button onclick="ideias()">Gerar 50 Ideias</button>
 
-<button onclick="titulos()">GERAR TÍTULOS</button>
+<button onclick="estrutura()">Gerar Estrutura</button>
 
-<button onclick="ideias50()">50 IDEIAS DE LIVROS</button>
+<button onclick="sumario()">Gerar Sumário</button>
 
-<button onclick="estrutura()">GERAR ESTRUTURA DO LIVRO</button>
+<button onclick="sinopse()">Gerar Sinopse</button>
 
-<button onclick="sumario()">GERAR SUMÁRIO PROFISSIONAL</button>
+<button onclick="descricao()">Descrição Amazon</button>
 
-<button onclick="sinopse()">GERAR SINOPSE QUE VENDE</button>
+<button onclick="capitulo()">Gerar Capítulo</button>
 
-<button onclick="descricao()">GERAR DESCRIÇÃO AMAZON</button>
+<button onclick="livro()">Gerar Livro Completo</button>
 
-<button onclick="livro()">GERAR LIVRO COMPLETO</button>
+<button onclick="prompt()">Prompt IA Livro</button>
 
-<button onclick="promptIA()">PROMPT PARA IA ESCREVER LIVRO</button>
+<button onclick="capa()">Ideia de Capa</button>
 
-<button onclick="capa()">IDEIA DE CAPA</button>
-
-<button onclick="copiar()">COPIAR TEXTO</button>
+<button onclick="copiar()">Copiar Texto</button>
 
 <textarea id="resultado"></textarea>
 
@@ -91,196 +95,214 @@ font-size:16px;
 
 <script>
 
+function nicho(){
+return document.getElementById("nicho").value
+}
+
 function titulos(){
 
-let nicho=document.getElementById("nicho").value
+let n=nicho()
 
-let texto="TÍTULOS BEST SELLER\n\n"
+let t="TÍTULOS QUE VENDEM\n\n"
 
-texto+="1 O Método Definitivo para Superar "+nicho+"\n"
-texto+="2 Como Dominar a "+nicho+" em 21 Dias\n"
-texto+="3 O Fim da "+nicho+" Passo a Passo\n"
-texto+="4 A Verdade Oculta Sobre a "+nicho+"\n"
-texto+="5 Mente Forte: Como Controlar a "+nicho+"\n"
+t+="1 O Método Definitivo para Superar "+n+"\n"
+t+="2 Como Controlar "+n+" em 21 Dias\n"
+t+="3 A Verdade Sobre "+n+"\n"
+t+="4 O Fim da "+n+"\n"
+t+="5 Mente Forte Contra "+n+"\n"
+t+="6 Manual Prático Contra "+n+"\n"
+t+="7 Dominando a "+n+"\n"
+t+="8 Libertando-se da "+n+"\n"
 
-document.getElementById("resultado").value=texto
+mostrar(t)
 
 }
 
+function ideias(){
 
+let n=nicho()
 
-function ideias50(){
-
-let nicho=document.getElementById("nicho").value
-
-let texto="50 IDEIAS DE LIVROS SOBRE "+nicho+"\n\n"
+let t="50 IDEIAS DE LIVROS\n\n"
 
 for(let i=1;i<=50;i++){
 
-texto+=i+" Estratégias práticas para vencer "+nicho+"\n"
+t+=i+" Estratégias práticas para vencer "+n+"\n"
 
 }
 
-document.getElementById("resultado").value=texto
+mostrar(t)
 
 }
-
-
 
 function estrutura(){
 
-let nicho=document.getElementById("nicho").value
+let n=nicho()
 
-let texto="ESTRUTURA DO LIVRO\n\n"
+let t="ESTRUTURA DO LIVRO\n\n"
 
-texto+="Introdução\n\n"
+t+="Introdução\n\n"
 
-texto+="Capítulo 1 Entendendo "+nicho+"\n"
-texto+="Capítulo 2 As causas invisíveis\n"
-texto+="Capítulo 3 O impacto emocional\n"
-texto+="Capítulo 4 Mudando padrões mentais\n"
-texto+="Capítulo 5 Técnicas práticas\n"
-texto+="Capítulo 6 Exercícios diários\n"
-texto+="Capítulo 7 Construindo uma mente forte\n"
+t+="Capítulo 1 Entendendo "+n+"\n"
+t+="Capítulo 2 O impacto emocional\n"
+t+="Capítulo 3 Causas invisíveis\n"
+t+="Capítulo 4 Mudando pensamentos\n"
+t+="Capítulo 5 Técnicas práticas\n"
+t+="Capítulo 6 Exercícios mentais\n"
+t+="Capítulo 7 Criando novos hábitos\n"
+t+="Capítulo 8 Mantendo resultados\n"
 
-texto+="\nConclusão\n"
+t+="\nConclusão\n"
 
-document.getElementById("resultado").value=texto
+mostrar(t)
 
 }
-
-
 
 function sumario(){
 
-let nicho=document.getElementById("nicho").value
+let n=nicho()
 
-let texto="SUMÁRIO PROFISSIONAL\n\n"
+let t="SUMÁRIO PROFISSIONAL\n\n"
 
-texto+="Parte 1 – Compreendendo "+nicho+"\n"
-texto+="Capítulo 1 A origem emocional\n"
-texto+="Capítulo 2 Como o cérebro reage\n"
-texto+="Capítulo 3 Gatilhos invisíveis\n\n"
+t+="Parte 1 – Entendendo "+n+"\n"
+t+="Capítulo 1 Origem do problema\n"
+t+="Capítulo 2 Como a mente reage\n"
+t+="Capítulo 3 Gatilhos emocionais\n\n"
 
-texto+="Parte 2 – Transformação Mental\n"
-texto+="Capítulo 4 Mudando pensamentos\n"
-texto+="Capítulo 5 Desenvolvendo autocontrole\n"
-texto+="Capítulo 6 Reprogramação mental\n\n"
+t+="Parte 2 – Mudança mental\n"
+t+="Capítulo 4 Reprogramação mental\n"
+t+="Capítulo 5 Técnicas psicológicas\n"
+t+="Capítulo 6 Exercícios práticos\n\n"
 
-texto+="Parte 3 – Nova Vida\n"
-texto+="Capítulo 7 Hábitos mentais saudáveis\n"
-texto+="Capítulo 8 Mantendo resultados\n"
+t+="Parte 3 – Nova vida\n"
+t+="Capítulo 7 Novos hábitos\n"
+t+="Capítulo 8 Mantendo resultados\n"
 
-document.getElementById("resultado").value=texto
+mostrar(t)
 
 }
-
-
 
 function sinopse(){
 
-let nicho=document.getElementById("nicho").value
+let n=nicho()
 
-let texto="SINOPSE DO LIVRO\n\n"
+let t="SINOPSE\n\n"
 
-texto+="Você sente que a "+nicho+" controla seus pensamentos?\n\n"
+t+="Você sente que "+n+" domina seus pensamentos?\n\n"
 
-texto+="Este livro revela técnicas práticas para compreender suas emoções, controlar pensamentos negativos e recuperar a tranquilidade interior.\n\n"
+t+="Este livro apresenta estratégias práticas para compreender suas emoções e recuperar o controle da mente.\n\n"
 
-texto+="Com estratégias simples e exercícios aplicáveis no dia a dia, você aprenderá a transformar sua mente e viver com mais equilíbrio.\n"
+t+="Com técnicas simples e exercícios aplicáveis no dia a dia, você aprenderá a transformar sua mentalidade.\n"
 
-document.getElementById("resultado").value=texto
+mostrar(t)
 
 }
-
-
 
 function descricao(){
 
-let nicho=document.getElementById("nicho").value
+let n=nicho()
 
-let texto="DESCRIÇÃO PARA AMAZON\n\n"
+let t="DESCRIÇÃO AMAZON\n\n"
 
-texto+="✔ Pensamentos acelerados?\n"
-texto+="✔ Preocupação constante?\n"
-texto+="✔ Sensação de perda de controle?\n\n"
+t+="✔ Pensamentos acelerados?\n"
+t+="✔ Dificuldade para relaxar?\n"
+t+="✔ Sensação constante de preocupação?\n\n"
 
-texto+="Se você enfrenta "+nicho+", este livro apresenta estratégias práticas para recuperar sua paz interior.\n\n"
+t+="Se você enfrenta "+n+", este livro apresenta estratégias práticas para recuperar sua paz mental.\n\n"
 
-texto+="Descubra como transformar sua mente e criar uma vida emocional mais equilibrada.\n"
+t+="Descubra como transformar sua mente e viver com mais tranquilidade.\n"
 
-document.getElementById("resultado").value=texto
+mostrar(t)
 
 }
 
+function capitulo(){
 
+let n=nicho()
+
+let t="CAPÍTULO 1\n\n"
+
+t+="A "+n+" é uma experiência emocional que muitas pessoas enfrentam diariamente.\n\n"
+
+t+="Embora seja uma reação natural do corpo, quando se torna intensa ou frequente pode afetar a qualidade de vida.\n\n"
+
+t+="Neste capítulo vamos compreender como a mente reage e quais são os primeiros passos para recuperar o equilíbrio emocional.\n\n"
+
+t+="Exercício:\n\n"
+
+t+="Escreva em um papel quais situações costumam desencadear "+n+" em sua vida.\n"
+
+mostrar(t)
+
+}
 
 function livro(){
 
-let nicho=document.getElementById("nicho").value
+let n=nicho()
 
-let texto="LIVRO COMPLETO SOBRE "+nicho+"\n\n"
+let t="LIVRO COMPLETO SOBRE "+n+"\n\n"
 
-texto+="INTRODUÇÃO\n\n"
+t+="INTRODUÇÃO\n\n"
 
 for(let i=1;i<=10;i++){
 
-texto+="CAPÍTULO "+i+" Explorando profundamente "+nicho+"\n"
+t+="CAPÍTULO "+i+" Explorando profundamente "+n+"\n\n"
 
 }
 
-texto+="\nCONCLUSÃO Transformando sua mente e sua vida.\n"
+t+="CONCLUSÃO\n\n"
 
-document.getElementById("resultado").value=texto
+t+="Transformando sua mente e sua vida.\n"
 
-}
-
-
-
-function promptIA(){
-
-let nicho=document.getElementById("nicho").value
-
-let texto="PROMPT PARA IA ESCREVER LIVRO COMPLETO\n\n"
-
-texto+="Escreva um livro completo de 80 a 120 páginas sobre "+nicho+".\n\n"
-
-texto+="O livro deve conter:\n"
-
-texto+="Introdução\n"
-texto+="10 capítulos detalhados\n"
-texto+="exemplos práticos\n"
-texto+="exercícios\n"
-texto+="explicações profundas\n"
-texto+="conclusão inspiradora\n\n"
-
-texto+="O texto deve ser original, bem estruturado e escrito em português do Brasil.\n"
-
-document.getElementById("resultado").value=texto
+mostrar(t)
 
 }
 
+function prompt(){
 
+let n=nicho()
+
+let t="PROMPT PARA IA ESCREVER LIVRO\n\n"
+
+t+="Escreva um livro completo de 80 a 120 páginas sobre "+n+".\n\n"
+
+t+="O livro deve conter:\n"
+
+t+="Introdução\n"
+t+="10 capítulos detalhados\n"
+t+="exemplos práticos\n"
+t+="histórias\n"
+t+="exercícios\n"
+t+="conclusão inspiradora\n\n"
+
+t+="O texto deve ser original e escrito em português do Brasil.\n"
+
+mostrar(t)
+
+}
 
 function capa(){
 
-let nicho=document.getElementById("nicho").value
+let n=nicho()
 
-let texto="IDEIA DE CAPA DO LIVRO\n\n"
+let t="IDEIA DE CAPA\n\n"
 
-texto+="Título: Dominando a "+nicho+"\n\n"
+t+="Título: Dominando "+n+"\n\n"
 
-texto+="Imagem: pessoa em silêncio olhando o horizonte simbolizando paz mental.\n\n"
+t+="Imagem: pessoa olhando o horizonte simbolizando liberdade mental.\n\n"
 
-texto+="Cores: azul profundo, branco e dourado.\n\n"
+t+="Cores: azul escuro e dourado.\n\n"
 
-texto+="Subtítulo: Como recuperar o controle da mente e viver com tranquilidade.\n"
+t+="Subtítulo: Como recuperar o controle da mente.\n"
+
+mostrar(t)
+
+}
+
+function mostrar(texto){
 
 document.getElementById("resultado").value=texto
 
 }
-
-
 
 function copiar(){
 
@@ -290,7 +312,7 @@ texto.select()
 
 document.execCommand("copy")
 
-alert("Texto copiado!")
+alert("Texto copiado")
 
 }
 
