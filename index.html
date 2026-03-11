@@ -9,11 +9,11 @@
 
 body{
 font-family:Arial;
-background:#f3f4f6;
+background:#eef2f7;
 padding:40px;
 }
 
-.container{
+.box{
 background:white;
 padding:30px;
 max-width:900px;
@@ -23,25 +23,29 @@ box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
 button{
-padding:12px;
-background:#2563eb;
+background:#2c7be5;
 color:white;
 border:none;
+padding:10px 15px;
+margin:5px;
 border-radius:6px;
 cursor:pointer;
-margin-top:10px;
+}
+
+button:hover{
+background:#1a5fd1;
 }
 
 textarea{
 width:100%;
-height:400px;
+height:350px;
 margin-top:20px;
+padding:10px;
 }
 
 input{
-width:100%;
 padding:10px;
-margin-top:10px;
+width:100%;
 }
 
 </style>
@@ -50,15 +54,31 @@ margin-top:10px;
 
 <body>
 
-<div class="container">
+<div class="box">
 
-<h2>Gerador Automático de Livros com IA</h2>
+<h2>Gerador Profissional de Livros</h2>
 
-<label>Tema do Livro</label>
+<p>Digite o nicho do livro:</p>
 
-<input id="tema" placeholder="Ex: ansiedade">
+<input id="nicho" placeholder="ex: ansiedade">
 
-<button onclick="gerarLivro()">GERAR LIVRO COMPLETO</button>
+<br><br>
+
+<button onclick="titulos()">GERAR TÍTULOS</button>
+<button onclick="estrutura()">GERAR ESTRUTURA</button>
+<button onclick="sinopse()">GERAR SINOPSE</button>
+<button onclick="ideias()">50 IDEIAS DE LIVROS</button>
+
+<br>
+
+<button onclick="capitulo()">GERAR CAPÍTULO</button>
+<button onclick="capitulolongo()">CAPÍTULO LONGO</button>
+
+<br>
+
+<button onclick="livroIA()">GERAR LIVRO COMPLETO COM IA</button>
+
+<button onclick="copiar()">COPIAR TEXTO</button>
 
 <textarea id="resultado"></textarea>
 
@@ -66,9 +86,110 @@ margin-top:10px;
 
 <script>
 
-async function gerarLivro(){
+function titulos(){
 
-let tema=document.getElementById("tema").value
+let nicho=document.getElementById("nicho").value
+
+let texto="TÍTULOS DE LIVROS\n\n"
+
+texto+="1 O Método Definitivo para Vencer "+nicho+"\n"
+texto+="2 7 Estratégias para Superar "+nicho+"\n"
+texto+="3 Como Controlar a "+nicho+" na Vida Moderna\n"
+texto+="4 O Poder da Transformação Mental\n"
+texto+="5 A Verdade Oculta Sobre "+nicho+"\n"
+
+document.getElementById("resultado").value=texto
+
+}
+
+function estrutura(){
+
+let nicho=document.getElementById("nicho").value
+
+let texto="ESTRUTURA DO LIVRO\n\n"
+
+texto+="Introdução\n\n"
+texto+="Capítulo 1 Entendendo "+nicho+"\n"
+texto+="Capítulo 2 As causas emocionais\n"
+texto+="Capítulo 3 Como a mente reage\n"
+texto+="Capítulo 4 Mudando padrões mentais\n"
+texto+="Capítulo 5 Exercícios práticos\n"
+texto+="Capítulo 6 Construindo uma nova mentalidade\n"
+texto+="Conclusão\n"
+
+document.getElementById("resultado").value=texto
+
+}
+
+function sinopse(){
+
+let nicho=document.getElementById("nicho").value
+
+let texto="SINOPSE\n\n"
+
+texto+="Você sente que "+nicho+" domina sua mente?\n\n"
+
+texto+="Este livro revela técnicas práticas para compreender suas emoções, controlar pensamentos e desenvolver uma mente equilibrada.\n\n"
+
+texto+="Com estratégias simples e exercícios aplicáveis no dia a dia, você descobrirá como transformar sua vida emocional.\n"
+
+document.getElementById("resultado").value=texto
+
+}
+
+function ideias(){
+
+let nicho=document.getElementById("nicho").value
+
+let texto="50 IDEIAS DE LIVROS\n\n"
+
+for(let i=1;i<=50;i++){
+
+texto+=i+" Estratégias para lidar com "+nicho+"\n"
+
+}
+
+document.getElementById("resultado").value=texto
+
+}
+
+function capitulo(){
+
+let nicho=document.getElementById("nicho").value
+
+let texto="CAPÍTULO 1\n\n"
+
+texto+="A "+nicho+" é uma das experiências emocionais mais comuns da vida moderna.\n\n"
+
+texto+="Muitas pessoas convivem diariamente com pensamentos acelerados e preocupações constantes.\n\n"
+
+texto+="Neste capítulo vamos compreender como esse processo se forma na mente humana.\n"
+
+document.getElementById("resultado").value=texto
+
+}
+
+function capitulolongo(){
+
+let nicho=document.getElementById("nicho").value
+
+let texto="CAPÍTULO DETALHADO\n\n"
+
+for(let i=0;i<10;i++){
+
+texto+="A "+nicho+" influencia diretamente o comportamento humano. Quando aprendemos a compreender nossos pensamentos, começamos a desenvolver maior controle emocional.\n\n"
+
+}
+
+document.getElementById("resultado").value=texto
+
+}
+
+async function livroIA(){
+
+let nicho=document.getElementById("nicho").value
+
+document.getElementById("resultado").value="Gerando livro com IA... aguarde"
 
 let resposta = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyBygv83RSjFBWbK1-e3a-RoRubuCCZnfMQ",{
 
@@ -82,7 +203,7 @@ body:JSON.stringify({
 
 contents:[{
 parts:[{
-text:"Escreva um livro completo com introdução, 10 capítulos detalhados e conclusão sobre "+tema+". O texto deve ser longo, educativo e bem estruturado."
+text:"Escreva um ebook completo de 10 capítulos sobre "+nicho+" com introdução, capítulos detalhados e conclusão."
 }]
 }]
 
@@ -94,6 +215,18 @@ let dados = await resposta.json()
 
 document.getElementById("resultado").value =
 dados.candidates[0].content.parts[0].text
+
+}
+
+function copiar(){
+
+let texto=document.getElementById("resultado")
+
+texto.select()
+
+document.execCommand("copy")
+
+alert("Texto copiado!")
 
 }
 
