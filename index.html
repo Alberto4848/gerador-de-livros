@@ -3,7 +3,7 @@
 
 <head>
 
-<title>Gerador Profissional de Livros KDP</title>
+<title>Super Gerador de Livros Amazon KDP</title>
 
 <style>
 
@@ -16,7 +16,7 @@ padding:40px;
 .box{
 background:white;
 padding:30px;
-max-width:900px;
+max-width:1000px;
 margin:auto;
 border-radius:10px;
 box-shadow:0 0 10px rgba(0,0,0,0.1);
@@ -38,7 +38,7 @@ background:#1a5fd1;
 
 textarea{
 width:100%;
-height:400px;
+height:450px;
 margin-top:20px;
 padding:10px;
 }
@@ -57,7 +57,7 @@ font-size:16px;
 
 <div class="box">
 
-<h2>Gerador Profissional de Livros para Amazon</h2>
+<h2>Super Gerador de Livros para Amazon</h2>
 
 <p>Digite o nicho do livro:</p>
 
@@ -66,19 +66,22 @@ font-size:16px;
 <br><br>
 
 <button onclick="titulos()">GERAR TÍTULOS</button>
-<button onclick="estrutura()">GERAR ESTRUTURA</button>
-<button onclick="capitulos()">GERAR CAPÍTULO</button>
-<button onclick="sinopse()">GERAR SINOPSE</button>
-<button onclick="livro()">GERAR LIVRO BASE</button>
 
-<button onclick="ideias20()">20 IDEIAS DE LIVROS</button>
-<button onclick="ideias50()">50 IDEIAS QUE VENDEM</button>
+<button onclick="ideias50()">50 IDEIAS DE LIVROS</button>
 
-<button onclick="descricao()">DESCRIÇÃO QUE VENDE</button>
+<button onclick="estrutura()">GERAR ESTRUTURA DO LIVRO</button>
 
-<button onclick="livroautomatico()">GERAR LIVRO AUTOMÁTICO</button>
+<button onclick="sumario()">GERAR SUMÁRIO PROFISSIONAL</button>
 
-<button onclick="capa()">IDEIA DE CAPA DO LIVRO</button>
+<button onclick="sinopse()">GERAR SINOPSE QUE VENDE</button>
+
+<button onclick="descricao()">GERAR DESCRIÇÃO AMAZON</button>
+
+<button onclick="livro()">GERAR LIVRO COMPLETO</button>
+
+<button onclick="promptIA()">PROMPT PARA IA ESCREVER LIVRO</button>
+
+<button onclick="capa()">IDEIA DE CAPA</button>
 
 <button onclick="copiar()">COPIAR TEXTO</button>
 
@@ -95,10 +98,28 @@ let nicho=document.getElementById("nicho").value
 let texto="TÍTULOS BEST SELLER\n\n"
 
 texto+="1 O Método Definitivo para Superar "+nicho+"\n"
-texto+="2 7 Passos Para Vencer a "+nicho+"\n"
-texto+="3 Como Eliminar a "+nicho+" da Sua Vida\n"
+texto+="2 Como Dominar a "+nicho+" em 21 Dias\n"
+texto+="3 O Fim da "+nicho+" Passo a Passo\n"
 texto+="4 A Verdade Oculta Sobre a "+nicho+"\n"
-texto+="5 O Poder da Transformação Interior\n"
+texto+="5 Mente Forte: Como Controlar a "+nicho+"\n"
+
+document.getElementById("resultado").value=texto
+
+}
+
+
+
+function ideias50(){
+
+let nicho=document.getElementById("nicho").value
+
+let texto="50 IDEIAS DE LIVROS SOBRE "+nicho+"\n\n"
+
+for(let i=1;i<=50;i++){
+
+texto+=i+" Estratégias práticas para vencer "+nicho+"\n"
+
+}
 
 document.getElementById("resultado").value=texto
 
@@ -113,13 +134,16 @@ let nicho=document.getElementById("nicho").value
 let texto="ESTRUTURA DO LIVRO\n\n"
 
 texto+="Introdução\n\n"
+
 texto+="Capítulo 1 Entendendo "+nicho+"\n"
 texto+="Capítulo 2 As causas invisíveis\n"
-texto+="Capítulo 3 Como a mente reage\n"
-texto+="Capítulo 4 O método de transformação\n"
-texto+="Capítulo 5 Exercícios práticos\n"
-texto+="Capítulo 6 Criando uma nova mentalidade\n\n"
-texto+="Conclusão\n"
+texto+="Capítulo 3 O impacto emocional\n"
+texto+="Capítulo 4 Mudando padrões mentais\n"
+texto+="Capítulo 5 Técnicas práticas\n"
+texto+="Capítulo 6 Exercícios diários\n"
+texto+="Capítulo 7 Construindo uma mente forte\n"
+
+texto+="\nConclusão\n"
 
 document.getElementById("resultado").value=texto
 
@@ -127,17 +151,25 @@ document.getElementById("resultado").value=texto
 
 
 
-function capitulos(){
+function sumario(){
 
 let nicho=document.getElementById("nicho").value
 
-let texto="CAPÍTULO 1\n\n"
+let texto="SUMÁRIO PROFISSIONAL\n\n"
 
-texto+="A "+nicho+" é uma das experiências emocionais mais comuns da vida moderna.\n\n"
+texto+="Parte 1 – Compreendendo "+nicho+"\n"
+texto+="Capítulo 1 A origem emocional\n"
+texto+="Capítulo 2 Como o cérebro reage\n"
+texto+="Capítulo 3 Gatilhos invisíveis\n\n"
 
-texto+="Muitas pessoas vivem com pensamentos acelerados, preocupações constantes e sensação de perda de controle.\n\n"
+texto+="Parte 2 – Transformação Mental\n"
+texto+="Capítulo 4 Mudando pensamentos\n"
+texto+="Capítulo 5 Desenvolvendo autocontrole\n"
+texto+="Capítulo 6 Reprogramação mental\n\n"
 
-texto+="Neste capítulo vamos compreender como esse processo se forma na mente humana e quais são os primeiros passos para recuperar a tranquilidade interior.\n"
+texto+="Parte 3 – Nova Vida\n"
+texto+="Capítulo 7 Hábitos mentais saudáveis\n"
+texto+="Capítulo 8 Mantendo resultados\n"
 
 document.getElementById("resultado").value=texto
 
@@ -149,69 +181,13 @@ function sinopse(){
 
 let nicho=document.getElementById("nicho").value
 
-let texto="SINOPSE PARA AMAZON\n\n"
+let texto="SINOPSE DO LIVRO\n\n"
 
-texto+="Você sente que a "+nicho+" domina seus pensamentos?\n\n"
+texto+="Você sente que a "+nicho+" controla seus pensamentos?\n\n"
 
-texto+="Neste livro você descobrirá métodos práticos para compreender suas emoções, controlar pensamentos e desenvolver uma mente mais tranquila.\n\n"
+texto+="Este livro revela técnicas práticas para compreender suas emoções, controlar pensamentos negativos e recuperar a tranquilidade interior.\n\n"
 
-texto+="Com exemplos simples e exercícios práticos, este guia mostra como transformar sua vida emocional passo a passo.\n"
-
-document.getElementById("resultado").value=texto
-
-}
-
-
-
-function livro(){
-
-let nicho=document.getElementById("nicho").value
-
-let texto="INTRODUÇÃO\n\n"
-
-texto+="A "+nicho+" tem se tornado um dos maiores desafios emocionais da vida moderna.\n\n"
-
-texto+="CAPÍTULO 1 Entendendo "+nicho+"\n"
-texto+="CAPÍTULO 2 Os gatilhos emocionais\n"
-texto+="CAPÍTULO 3 O método de transformação mental\n"
-texto+="CAPÍTULO 4 Exercícios práticos\n"
-texto+="CAPÍTULO 5 Criando uma mente forte\n"
-
-document.getElementById("resultado").value=texto
-
-}
-
-
-
-function ideias20(){
-
-let nicho=document.getElementById("nicho").value
-
-let texto="20 IDEIAS DE LIVROS SOBRE "+nicho+"\n\n"
-
-for(let i=1;i<=20;i++){
-
-texto+=i+" Estratégias práticas para superar "+nicho+"\n"
-
-}
-
-document.getElementById("resultado").value=texto
-
-}
-
-
-
-function ideias50(){
-
-let nicho=document.getElementById("nicho").value
-
-let texto="50 IDEIAS DE LIVROS QUE VENDEM SOBRE "+nicho+"\n\n"
-
-for(let i=1;i<=50;i++){
-
-texto+=i+" Como vencer "+nicho+" passo a passo\n"
-
-}
+texto+="Com estratégias simples e exercícios aplicáveis no dia a dia, você aprenderá a transformar sua mente e viver com mais equilíbrio.\n"
 
 document.getElementById("resultado").value=texto
 
@@ -225,12 +201,13 @@ let nicho=document.getElementById("nicho").value
 
 let texto="DESCRIÇÃO PARA AMAZON\n\n"
 
-texto+="✔ Você sente que a "+nicho+" domina seus pensamentos?\n"
-texto+="✔ Quer aprender a controlar emoções?\n\n"
+texto+="✔ Pensamentos acelerados?\n"
+texto+="✔ Preocupação constante?\n"
+texto+="✔ Sensação de perda de controle?\n\n"
 
-texto+="Este livro revela estratégias práticas para recuperar o equilíbrio emocional e desenvolver uma mente mais tranquila.\n\n"
+texto+="Se você enfrenta "+nicho+", este livro apresenta estratégias práticas para recuperar sua paz interior.\n\n"
 
-texto+="Com técnicas simples e aplicáveis no dia a dia, você aprenderá a transformar sua relação com a "+nicho+".\n"
+texto+="Descubra como transformar sua mente e criar uma vida emocional mais equilibrada.\n"
 
 document.getElementById("resultado").value=texto
 
@@ -238,7 +215,7 @@ document.getElementById("resultado").value=texto
 
 
 
-function livroautomatico(){
+function livro(){
 
 let nicho=document.getElementById("nicho").value
 
@@ -252,7 +229,32 @@ texto+="CAPÍTULO "+i+" Explorando profundamente "+nicho+"\n"
 
 }
 
-texto+="\nCONCLUSÃO Transformando sua mente e sua vida."
+texto+="\nCONCLUSÃO Transformando sua mente e sua vida.\n"
+
+document.getElementById("resultado").value=texto
+
+}
+
+
+
+function promptIA(){
+
+let nicho=document.getElementById("nicho").value
+
+let texto="PROMPT PARA IA ESCREVER LIVRO COMPLETO\n\n"
+
+texto+="Escreva um livro completo de 80 a 120 páginas sobre "+nicho+".\n\n"
+
+texto+="O livro deve conter:\n"
+
+texto+="Introdução\n"
+texto+="10 capítulos detalhados\n"
+texto+="exemplos práticos\n"
+texto+="exercícios\n"
+texto+="explicações profundas\n"
+texto+="conclusão inspiradora\n\n"
+
+texto+="O texto deve ser original, bem estruturado e escrito em português do Brasil.\n"
 
 document.getElementById("resultado").value=texto
 
@@ -264,15 +266,15 @@ function capa(){
 
 let nicho=document.getElementById("nicho").value
 
-let texto="IDEIA DE CAPA PARA O LIVRO\n\n"
+let texto="IDEIA DE CAPA DO LIVRO\n\n"
 
-texto+="Título grande sobre "+nicho+"\n\n"
+texto+="Título: Dominando a "+nicho+"\n\n"
 
-texto+="Imagem principal: pessoa pensativa com luz suave simbolizando transformação emocional.\n\n"
+texto+="Imagem: pessoa em silêncio olhando o horizonte simbolizando paz mental.\n\n"
 
-texto+="Cores sugeridas: azul, branco e dourado.\n\n"
+texto+="Cores: azul profundo, branco e dourado.\n\n"
 
-texto+="Subtítulo: Como recuperar a paz interior e dominar sua mente."
+texto+="Subtítulo: Como recuperar o controle da mente e viver com tranquilidade.\n"
 
 document.getElementById("resultado").value=texto
 
