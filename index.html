@@ -1,58 +1,47 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html>
 <head>
 
 <meta charset="UTF-8">
-<title>Super Gerador de Livros Amazon KDP</title>
+<title>Gerador de Livros com IA</title>
 
 <style>
 
 body{
 font-family:Arial;
-background:#eef2f7;
+background:#f3f4f6;
 padding:40px;
 }
 
 .container{
 background:white;
 padding:30px;
-max-width:1000px;
+max-width:900px;
 margin:auto;
 border-radius:10px;
 box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
-h1{
-text-align:center;
-}
-
-input{
-width:100%;
-padding:12px;
-font-size:16px;
-margin-bottom:15px;
-}
-
 button{
-background:#2c7be5;
+padding:12px;
+background:#2563eb;
 color:white;
 border:none;
-padding:10px 14px;
-margin:4px;
 border-radius:6px;
 cursor:pointer;
-}
-
-button:hover{
-background:#1a5fd1;
+margin-top:10px;
 }
 
 textarea{
 width:100%;
-height:420px;
+height:400px;
 margin-top:20px;
+}
+
+input{
+width:100%;
 padding:10px;
+margin-top:10px;
 }
 
 </style>
@@ -63,31 +52,13 @@ padding:10px;
 
 <div class="container">
 
-<h1>Super Gerador de Livros para Amazon KDP</h1>
+<h2>Gerador Automático de Livros com IA</h2>
 
-<input id="nicho" placeholder="Digite o nicho do livro. Ex: ansiedade">
+<label>Tema do Livro</label>
 
-<button onclick="titulos()">Gerar Títulos</button>
+<input id="tema" placeholder="Ex: ansiedade">
 
-<button onclick="ideias()">Gerar 50 Ideias</button>
-
-<button onclick="estrutura()">Gerar Estrutura</button>
-
-<button onclick="sumario()">Gerar Sumário</button>
-
-<button onclick="sinopse()">Gerar Sinopse</button>
-
-<button onclick="descricao()">Descrição Amazon</button>
-
-<button onclick="capitulo()">Gerar Capítulo</button>
-
-<button onclick="livro()">Gerar Livro Completo</button>
-
-<button onclick="prompt()">Prompt IA Livro</button>
-
-<button onclick="capa()">Ideia de Capa</button>
-
-<button onclick="copiar()">Copiar Texto</button>
+<button onclick="gerarLivro()">GERAR LIVRO COMPLETO</button>
 
 <textarea id="resultado"></textarea>
 
@@ -95,229 +66,38 @@ padding:10px;
 
 <script>
 
-function nicho(){
-return document.getElementById("nicho").value
-}
+async function gerarLivro(){
 
-function titulos(){
+let tema=document.getElementById("tema").value
 
-let n=nicho()
+let resposta = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyBygv83RSjFBWbK1-e3a-RoRubuCCZnfMQ",{
 
-let t="TÍTULOS QUE VENDEM\n\n"
+method:"POST",
 
-t+="1 O Método Definitivo para Superar "+n+"\n"
-t+="2 Como Controlar "+n+" em 21 Dias\n"
-t+="3 A Verdade Sobre "+n+"\n"
-t+="4 O Fim da "+n+"\n"
-t+="5 Mente Forte Contra "+n+"\n"
-t+="6 Manual Prático Contra "+n+"\n"
-t+="7 Dominando a "+n+"\n"
-t+="8 Libertando-se da "+n+"\n"
+headers:{
+"Content-Type":"application/json"
+},
 
-mostrar(t)
+body:JSON.stringify({
 
-}
+contents:[{
+parts:[{
+text:"Escreva um livro completo com introdução, 10 capítulos detalhados e conclusão sobre "+tema+". O texto deve ser longo, educativo e bem estruturado."
+}]
+}]
 
-function ideias(){
+})
 
-let n=nicho()
+})
 
-let t="50 IDEIAS DE LIVROS\n\n"
+let dados = await resposta.json()
 
-for(let i=1;i<=50;i++){
-
-t+=i+" Estratégias práticas para vencer "+n+"\n"
-
-}
-
-mostrar(t)
-
-}
-
-function estrutura(){
-
-let n=nicho()
-
-let t="ESTRUTURA DO LIVRO\n\n"
-
-t+="Introdução\n\n"
-
-t+="Capítulo 1 Entendendo "+n+"\n"
-t+="Capítulo 2 O impacto emocional\n"
-t+="Capítulo 3 Causas invisíveis\n"
-t+="Capítulo 4 Mudando pensamentos\n"
-t+="Capítulo 5 Técnicas práticas\n"
-t+="Capítulo 6 Exercícios mentais\n"
-t+="Capítulo 7 Criando novos hábitos\n"
-t+="Capítulo 8 Mantendo resultados\n"
-
-t+="\nConclusão\n"
-
-mostrar(t)
-
-}
-
-function sumario(){
-
-let n=nicho()
-
-let t="SUMÁRIO PROFISSIONAL\n\n"
-
-t+="Parte 1 – Entendendo "+n+"\n"
-t+="Capítulo 1 Origem do problema\n"
-t+="Capítulo 2 Como a mente reage\n"
-t+="Capítulo 3 Gatilhos emocionais\n\n"
-
-t+="Parte 2 – Mudança mental\n"
-t+="Capítulo 4 Reprogramação mental\n"
-t+="Capítulo 5 Técnicas psicológicas\n"
-t+="Capítulo 6 Exercícios práticos\n\n"
-
-t+="Parte 3 – Nova vida\n"
-t+="Capítulo 7 Novos hábitos\n"
-t+="Capítulo 8 Mantendo resultados\n"
-
-mostrar(t)
-
-}
-
-function sinopse(){
-
-let n=nicho()
-
-let t="SINOPSE\n\n"
-
-t+="Você sente que "+n+" domina seus pensamentos?\n\n"
-
-t+="Este livro apresenta estratégias práticas para compreender suas emoções e recuperar o controle da mente.\n\n"
-
-t+="Com técnicas simples e exercícios aplicáveis no dia a dia, você aprenderá a transformar sua mentalidade.\n"
-
-mostrar(t)
-
-}
-
-function descricao(){
-
-let n=nicho()
-
-let t="DESCRIÇÃO AMAZON\n\n"
-
-t+="✔ Pensamentos acelerados?\n"
-t+="✔ Dificuldade para relaxar?\n"
-t+="✔ Sensação constante de preocupação?\n\n"
-
-t+="Se você enfrenta "+n+", este livro apresenta estratégias práticas para recuperar sua paz mental.\n\n"
-
-t+="Descubra como transformar sua mente e viver com mais tranquilidade.\n"
-
-mostrar(t)
-
-}
-
-function capitulo(){
-
-let n=nicho()
-
-let t="CAPÍTULO 1\n\n"
-
-t+="A "+n+" é uma experiência emocional que muitas pessoas enfrentam diariamente.\n\n"
-
-t+="Embora seja uma reação natural do corpo, quando se torna intensa ou frequente pode afetar a qualidade de vida.\n\n"
-
-t+="Neste capítulo vamos compreender como a mente reage e quais são os primeiros passos para recuperar o equilíbrio emocional.\n\n"
-
-t+="Exercício:\n\n"
-
-t+="Escreva em um papel quais situações costumam desencadear "+n+" em sua vida.\n"
-
-mostrar(t)
-
-}
-
-function livro(){
-
-let n=nicho()
-
-let t="LIVRO COMPLETO SOBRE "+n+"\n\n"
-
-t+="INTRODUÇÃO\n\n"
-
-for(let i=1;i<=10;i++){
-
-t+="CAPÍTULO "+i+" Explorando profundamente "+n+"\n\n"
-
-}
-
-t+="CONCLUSÃO\n\n"
-
-t+="Transformando sua mente e sua vida.\n"
-
-mostrar(t)
-
-}
-
-function prompt(){
-
-let n=nicho()
-
-let t="PROMPT PARA IA ESCREVER LIVRO\n\n"
-
-t+="Escreva um livro completo de 80 a 120 páginas sobre "+n+".\n\n"
-
-t+="O livro deve conter:\n"
-
-t+="Introdução\n"
-t+="10 capítulos detalhados\n"
-t+="exemplos práticos\n"
-t+="histórias\n"
-t+="exercícios\n"
-t+="conclusão inspiradora\n\n"
-
-t+="O texto deve ser original e escrito em português do Brasil.\n"
-
-mostrar(t)
-
-}
-
-function capa(){
-
-let n=nicho()
-
-let t="IDEIA DE CAPA\n\n"
-
-t+="Título: Dominando "+n+"\n\n"
-
-t+="Imagem: pessoa olhando o horizonte simbolizando liberdade mental.\n\n"
-
-t+="Cores: azul escuro e dourado.\n\n"
-
-t+="Subtítulo: Como recuperar o controle da mente.\n"
-
-mostrar(t)
-
-}
-
-function mostrar(texto){
-
-document.getElementById("resultado").value=texto
-
-}
-
-function copiar(){
-
-let texto=document.getElementById("resultado")
-
-texto.select()
-
-document.execCommand("copy")
-
-alert("Texto copiado")
+document.getElementById("resultado").value =
+dados.candidates[0].content.parts[0].text
 
 }
 
 </script>
 
 </body>
-
 </html>
