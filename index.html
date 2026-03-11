@@ -80,7 +80,7 @@ font-size:16px;
 <button onclick="descricao()">DESCRIÇÃO QUE VENDE</button>
 
 <button onclick="capitulolongo()">CAPÍTULO LONGO</button>
-
+<button onclick="superlivro()">GERAR LIVRO 100 PÁGINAS</button>
 <button onclick="copiar()">COPIAR TEXTO</button>
 
 <textarea id="resultado"></textarea>
@@ -244,7 +244,29 @@ document.getElementById("resultado").value = texto
 }
 
 
+function superlivro(){
 
+let nicho = document.getElementById("nicho").value
+
+let texto = ""
+
+texto += "LIVRO COMPLETO SOBRE " + nicho + "\n\n"
+
+texto += "INTRODUÇÃO\n\n"
+texto += "Capítulo 1 - Entendendo " + nicho + "\n"
+texto += "Capítulo 2 - As causas profundas\n"
+texto += "Capítulo 3 - O impacto emocional\n"
+texto += "Capítulo 4 - Estratégias práticas\n"
+texto += "Capítulo 5 - Mudando hábitos mentais\n"
+texto += "Capítulo 6 - Construindo uma nova mentalidade\n"
+texto += "Capítulo 7 - Exercícios de transformação\n"
+texto += "Capítulo 8 - Mantendo resultados\n\n"
+
+texto += "Este livro deve ser desenvolvido com aproximadamente 80 a 120 páginas, explorando profundamente cada capítulo com exemplos práticos, histórias e exercícios.\n"
+
+document.getElementById("resultado").value = texto
+
+}
 function copiar(){
 
 let texto = document.getElementById("resultado")
