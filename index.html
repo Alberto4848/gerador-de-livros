@@ -1,54 +1,80 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Gerador de Livros</title>
+
+<title>Gerador de Livros KDP</title>
+
 <style>
 
 body{
 font-family:Arial;
-background:#f4f4f4;
+background:#eef2f7;
 padding:40px;
 }
 
 .box{
 background:white;
 padding:30px;
-max-width:700px;
+max-width:800px;
 margin:auto;
 border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
 button{
-background:#0066ff;
+background:#2c7be5;
 color:white;
-padding:10px 20px;
 border:none;
-border-radius:5px;
+padding:10px 15px;
+margin:5px;
+border-radius:6px;
 cursor:pointer;
+}
+
+button:hover{
+background:#1a5fd1;
 }
 
 textarea{
 width:100%;
 height:350px;
 margin-top:20px;
+padding:10px;
+}
+
+input{
+padding:8px;
+width:100%;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="box">
 
-<h2>Gerador de Ideias de Livro</h2>
+<h2>Gerador de Livros para Amazon</h2>
 
 <p>Digite o nicho do livro:</p>
 
-<input id="nicho">
+<input id="nicho" placeholder="ex: ansiedade">
 
 <br><br>
 
-<button onclick="gerar()">ANALISAR</button>
+<button onclick="titulos()">GERAR TÍTULOS</button>
+
+<button onclick="estrutura()">GERAR ESTRUTURA</button>
+
+<button onclick="capitulos()">GERAR CAPÍTULO</button>
+
+<button onclick="sinopse()">GERAR SINOPSE</button>
+
+<button onclick="livro()">GERAR LIVRO COMPLETO</button>
+
+<button onclick="copiar()">COPIAR TEXTO</button>
 
 <textarea id="resultado"></textarea>
 
@@ -56,36 +82,117 @@ margin-top:20px;
 
 <script>
 
-function gerar(){
+function titulos(){
 
 let nicho = document.getElementById("nicho").value
 
 let texto = ""
 
-texto += "NICHO: " + nicho + "\n\n"
+texto += "TÍTULOS BEST SELLER\n\n"
 
-texto += "TÍTULOS BEST SELLER:\n"
-texto += "1 O Poder da Transformação sobre " + nicho + "\n"
-texto += "2 7 Métodos Poderosos para Vencer a " + nicho + "\n"
-texto += "3 Como Recuperar a Paz Interior e Superar a " + nicho + "\n\n"
-
-texto += "ESTRUTURA DO LIVRO:\n"
-texto += "Introdução\n"
-texto += "Capítulo 1 Entendendo a " + nicho + "\n"
-texto += "Capítulo 2 Os Gatilhos Emocionais\n"
-texto += "Capítulo 3 O Método da Mente Calma\n"
-texto += "Capítulo 4 Exercícios Práticos\n"
-texto += "Capítulo 5 Transformando sua vida\n"
-texto += "Conclusão\n\n"
-
-texto += "EXEMPLO DE CAPÍTULO:\n"
-texto += "A " + nicho + " é uma reação natural da mente diante de desafios e incertezas da vida moderna. Muitas pessoas convivem diariamente com pensamentos acelerados, preocupação constante e sensação de perda de controle. Neste capítulo vamos compreender como esses processos surgem e como é possível iniciar um caminho de transformação interior.\n"
+texto += "1 O Método Definitivo para Superar " + nicho + "\n"
+texto += "2 7 Passos Para Vencer a " + nicho + "\n"
+texto += "3 Como Eliminar a " + nicho + " da Sua Vida\n"
+texto += "4 A Verdade Oculta Sobre a " + nicho + "\n"
+texto += "5 O Poder da Transformação Interior\n"
 
 document.getElementById("resultado").value = texto
+
+}
+
+function estrutura(){
+
+let nicho = document.getElementById("nicho").value
+
+let texto = ""
+
+texto += "ESTRUTURA DO LIVRO\n\n"
+
+texto += "Introdução\n\n"
+texto += "Capítulo 1 Entendendo a " + nicho + "\n"
+texto += "Capítulo 2 As causas invisíveis\n"
+texto += "Capítulo 3 Como a mente reage\n"
+texto += "Capítulo 4 O método de transformação\n"
+texto += "Capítulo 5 Exercícios práticos\n"
+texto += "Capítulo 6 Criando uma nova mentalidade\n\n"
+texto += "Conclusão\n"
+
+document.getElementById("resultado").value = texto
+
+}
+
+function capitulos(){
+
+let nicho = document.getElementById("nicho").value
+
+let texto = ""
+
+texto += "CAPÍTULO 1\n\n"
+
+texto += "A " + nicho + " é uma das experiências emocionais mais comuns da vida moderna. Muitas pessoas vivem com pensamentos acelerados, preocupações constantes e sensação de perda de controle.\n\n"
+
+texto += "Neste capítulo vamos compreender como esse processo se forma na mente humana e quais são os primeiros passos para recuperar a tranquilidade interior.\n"
+
+document.getElementById("resultado").value = texto
+
+}
+
+function sinopse(){
+
+let nicho = document.getElementById("nicho").value
+
+let texto = ""
+
+texto += "SINOPSE PARA AMAZON\n\n"
+
+texto += "Você sente que a " + nicho + " domina seus pensamentos?\n\n"
+
+texto += "Neste livro você descobrirá métodos práticos para compreender suas emoções, controlar pensamentos e desenvolver uma mente mais tranquila.\n\n"
+
+texto += "Com exemplos simples e exercícios práticos, este guia mostra como transformar sua vida emocional passo a passo.\n"
+
+document.getElementById("resultado").value = texto
+
+}
+
+function livro(){
+
+let nicho = document.getElementById("nicho").value
+
+let texto = ""
+
+texto += "INTRODUÇÃO\n\n"
+
+texto += "A " + nicho + " tem se tornado um dos maiores desafios emocionais da vida moderna.\n\n"
+
+texto += "CAPÍTULO 1\nEntendendo a " + nicho + "\n\n"
+
+texto += "CAPÍTULO 2\nOs gatilhos emocionais\n\n"
+
+texto += "CAPÍTULO 3\nO método de transformação mental\n\n"
+
+texto += "CAPÍTULO 4\nExercícios práticos\n\n"
+
+texto += "CONCLUSÃO\nConstruindo uma mente forte e equilibrada.\n"
+
+document.getElementById("resultado").value = texto
+
+}
+
+function copiar(){
+
+let texto = document.getElementById("resultado")
+
+texto.select()
+
+document.execCommand("copy")
+
+alert("Texto copiado!")
 
 }
 
 </script>
 
 </body>
+
 </html>
