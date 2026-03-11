@@ -3,8 +3,9 @@
 <head>
 <title>Gerador de Livros</title>
 <style>
+
 body{
-font-family: Arial;
+font-family:Arial;
 background:#f4f4f4;
 padding:40px;
 }
@@ -12,13 +13,13 @@ padding:40px;
 .box{
 background:white;
 padding:30px;
-max-width:600px;
+max-width:700px;
 margin:auto;
 border-radius:10px;
 }
 
 button{
-background:#0077ff;
+background:#0066ff;
 color:white;
 padding:10px 20px;
 border:none;
@@ -28,9 +29,10 @@ cursor:pointer;
 
 textarea{
 width:100%;
-height:200px;
+height:350px;
 margin-top:20px;
 }
+
 </style>
 </head>
 
@@ -42,7 +44,7 @@ margin-top:20px;
 
 <p>Digite o nicho do livro:</p>
 
-<input id="nicho" placeholder="ex: espiritualidade">
+<input id="nicho">
 
 <br><br>
 
@@ -62,18 +64,22 @@ let texto = ""
 
 texto += "NICHO: " + nicho + "\n\n"
 
-texto += "TÍTULOS SUGERIDOS:\n"
-texto += "1 O Poder da Transformação em " + nicho + "\n"
-texto += "2 Como Vencer Desafios de " + nicho + "\n"
-texto += "3 O Caminho da Liberdade em " + nicho + "\n\n"
+texto += "TÍTULOS BEST SELLER:\n"
+texto += "1 O Poder da Transformação sobre " + nicho + "\n"
+texto += "2 7 Métodos Poderosos para Vencer a " + nicho + "\n"
+texto += "3 Como Recuperar a Paz Interior e Superar a " + nicho + "\n\n"
 
 texto += "ESTRUTURA DO LIVRO:\n"
 texto += "Introdução\n"
-texto += "Capítulo 1 Fundamentos de " + nicho + "\n"
-texto += "Capítulo 2 Erros comuns\n"
-texto += "Capítulo 3 Método prático\n"
-texto += "Capítulo 4 Aplicação no dia a dia\n"
-texto += "Conclusão\n"
+texto += "Capítulo 1 Entendendo a " + nicho + "\n"
+texto += "Capítulo 2 Os Gatilhos Emocionais\n"
+texto += "Capítulo 3 O Método da Mente Calma\n"
+texto += "Capítulo 4 Exercícios Práticos\n"
+texto += "Capítulo 5 Transformando sua vida\n"
+texto += "Conclusão\n\n"
+
+texto += "EXEMPLO DE CAPÍTULO:\n"
+texto += "A " + nicho + " é uma reação natural da mente diante de desafios e incertezas da vida moderna. Muitas pessoas convivem diariamente com pensamentos acelerados, preocupação constante e sensação de perda de controle. Neste capítulo vamos compreender como esses processos surgem e como é possível iniciar um caminho de transformação interior.\n"
 
 document.getElementById("resultado").value = texto
 
